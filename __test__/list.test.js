@@ -113,25 +113,44 @@ describe('List Module', () => {
     expect(myList.filter(callback)).toEqual([]);
   });
 
-//   let src = [1,2,3,4,5];
-//   let mylist = new List(src);
-// myList.pop();
+  it('reduce() applies a given function to each array element and accumulates the array; returning a single value', () => {
+    let myList = new List();
+    myList.push(5);
+    myList.push(2);
+    myList.push(7);
 
-// src.pop();
+    let method = (el) => {
+      let newEl = el * 100;
+      return newEl;
+    };    
+    expect(myList.reduce(method)).toEqual(1400);
+  });
 
-// expect(myList.toArray()).toEqual(src);
+  it('reduce() an optional initial value can be added as the first/beginning argument', () => {
+    let myList = new List();
+    myList.push(5);
+    myList.push(2);
+    myList.push(7);
 
-// tst Map
+    let method = (el) => {
+      let newEl = el * 100;
+      return newEl;
+    };    
+    expect(myList.reduce(method, 54)).toEqual(6800);
+  });
 
-// let list = new List('apples', 'bananas');
+  it('reduce() returns an error if the applied array is empty', () => {
+    let myList = new List();
+    myList.push(5);
+    myList.pop();
+    let msg = ('TypeError: Reduce of empty array with no initial value');
 
-// let babyFoods = list.map(fruit => fruit + ' sauce');
-
-// expect(babyFoods.toEqual(new List('apples sauce', 'bananas sauce')))
-// ;
-
-
-
+    let method = (el) => {
+      let newEl = el * 100;
+      return newEl;
+    };    
+    expect(myList.reduce(method, 54)).toEqual(msg);
+  });
 
 });
 
