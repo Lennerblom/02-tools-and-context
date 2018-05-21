@@ -16,8 +16,15 @@ The **pop()** method has an airty of zero, and it removes and returns the last e
     arr.pop()  expected output = undefined
 
 The **forEach()** method executes a given function for every element in the array.  It also returns undefined.
+    
+    let myList = ['cheese', 'lettuce']
+    let shred = (el) => {
+      return (`shredded ${el}`);
+    };
 
-The map() method applies a given function to each element in the array and returns a new array of the same length.
+    myList.forEach(shred)  expected output = ['shredded cheese', 'shredded lettuce']
+
+The **map()** method applies a given function to each element in the array and returns a new array of the same length.
 
     let arr = [1,2,3]
     let callback = (num) => {
