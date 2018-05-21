@@ -48,13 +48,14 @@ describe('List Module', () => {
     expect(myList.length).toBe(1);
   });
 
-  xit('forEach() executes the provided function once for each element in the array', () => {
-    let src = ['cheese', 'lettuce'];
-    let myList = new List(src); 
-    let shred = () => {
-      console.log(`shredded' + ${src}`);
+  it('forEach() executes the provided function once for each element in the array', () => {
+    let myList = new List();
+    myList.push('cheese');
+    myList.push('lettuce'); 
+    let shred = (el) => {
+      return (`shredded ${el}`);
     };
-    expect(myList.forEach(shred, src)).toBe('shredded cheese', 'shredded lettuce');
+    expect(myList.forEach(shred)).toBe('shredded cheese', 'shredded lettuce');
   });
 
   it('map() returns a new array after applying a given function', () => {
