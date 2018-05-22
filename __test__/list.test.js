@@ -55,7 +55,7 @@ describe('List Module', () => {
     let shred = (el) => {
       return (`shredded ${el}`);
     };
-    expect(myList.forEach(shred)).toBe('shredded cheese', 'shredded lettuce');
+    expect(myList.forEach(shred)).toBe(undefined);
   });
 
   it('map() returns a new array after applying a given function', () => {

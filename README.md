@@ -1,6 +1,10 @@
+[![Build Status](https://travis-ci.org/Lennerblom/02-tools-and-context.svg?branch=master)](https://travis-ci.org/Lennerblom/02-tools-and-context)
+
 #02-Tools and Context
 
 The **List** class contains six methods that recreate their built in javaScript counterparts.  push(), pop(), forEach(), map(), filter(), and reduce().
+
+---
 
 The **push()** method has an airty of one, and it adds the given argument onto the end of the array, and adding to the array length.
 
