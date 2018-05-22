@@ -1,49 +1,74 @@
-![cf](https://i.imgur.com/7v5ASc8.png) 02: Tools and Context
-======
+[![Build Status](https://travis-ci.org/Lennerblom/02-tools-and-context.svg?branch=master)](https://travis-ci.org/Lennerblom/02-tools-and-context)
 
-## Submission Instructions
-* Work in a fork of this repository
-* Work in a branch on your fork
-* Write all of your code in a directory named `lab-` + `<your name>` **e.g.** `lab-susan`
-* Open a pull request to this repository
-* Submit on canvas a question and observation, how long you spent, and a link to your pull request
+#02-Tools and Context
 
-## Configuration
-Configure the root of your repository with the following files and directories. Thoughtfully name and organize any additional configuration or module files.
-* **README.md** - contains documentation
-* **.gitignore** - contains a [robust](http://gitignore.io) `.gitignore` file
-* **.eslintrc.json** - contains the course linter configuratoin
-* **.eslintignore** - contains the course linter ignore configuration
-* **.travis.yml** - travis-ci configuration file
-* **package.json** - contains npm package config
-  * create a `lint` script for running eslint
-  * create a `test` script for running tests
-* **lib/** - contains module definitions
-* **\_\_test\_\_/** - contains unit tests
+The **List** class contains six methods that recreate their built in javaScript counterparts.  push(), pop(), forEach(), map(), filter(), and reduce().
 
-## Feature Tasks
+---
 
-#### List Module
-  * implement a List constructor using a constructor, factory, or class
-  * implement the length property
-  * implement `push()`, `pop()` methods on the List prototype
-  * implement `forEach()`, `map()`, `filter()`, and `reduce()` as pure methods on the List prototype
-  * Do not use any built-in array methods to do this
-  
-#### Stretch Goals
-  * implement `slice()`, and `splice()` as methods on the List prototype
-  * implement `shift()`, and `unshift()` as methods on the List prototype
-  * These mutating methods will require you to re-index the list!
+The **push()** method has an airty of one, and it adds the given argument onto the end of the array, and adding to the array length.
 
-## Testing
-Create a NodeJS module in the \_\_test\_\_/ directory named `list.test.js` that asserts the correctness of the list module.
+    let arr = [1,2,3]
+    arr.push(4)  expected output = [1,2,3,4]
 
-Use the `describe` and `it` (or `test`) methods to define descriptive tests and increase readablity
-Each `it` callback should aim to test a small, well defined, feature of a function - this may include:
-  * tests that ensure the list module functions correctly with error-check parameters
-  * tests that the correct errors are thrown with invalid arguments exist
-  * tests to ensure that the list module functions return the correct results when invoked with valid arguments
+The **pop()** method has an airty of zero, and it removes and returns the last element from an array.  It reduces the length of the array and will return 'undefined' if invoked on an empty array.
 
-##  Documentation
-Include your travis badge at the top of your `README.md` file
-In your `README.md`, describe the exported values of each module you have defined. Every function description should include it's airty (expected number of parameters), the expected data for each parameter (data-type and limitations), and it's behavior (for both valid and invalid use). Feel free to add any additional information in your `README.md` that you would like.
+    let arr = [1,2,3]
+    arr.pop()  expected output = [1,2]
+
+    let arr = []
+    arr.pop()  expected output = undefined
+
+The **forEach()** method executes a given function for every element in the array.  It also returns undefined.
+    
+    let myList = ['cheese', 'lettuce']
+    let shred = (el) => {
+      return (`shredded ${el}`);
+    };
+
+    myList.forEach(shred)  expected output = ['shredded cheese', 'shredded lettuce']
+
+The **map()** method applies a given function to each element in the array and returns a new array of the same length.
+
+    let arr = [1,2,3]
+    let callback = (num) => {
+      let newNum = num * 3;
+      return newNum;
+    };
+
+    arr.map(callback);  expected output = [3,6,9]
+
+The **filter()** method returns an array with only elements that pass through a test.  If no elements pass the test, it will return an empty array [].
+
+    let arr = [1,2,7,13,32]
+    let callback = (num) => {
+      if(num > 10) {
+        return num;
+      }
+    };
+    arr.filter(callback)  expected output = [13,32]
+
+    let arr = [1,2,7,3,9,10]
+    let callback = (num) => {
+      if(num > 10) {
+        return num;
+      }
+    };
+    arr.filter(callback)  expected output = []
+
+The **reduce()** method applies a given function to each array element and accumulates the array; returning a single value.  An optional initial value can be added as the first argument. If reduce() is invoked on an empty array, an error will be given.
+
+    let arr = [1,2,3]
+    let method = (el) => {
+      let newEl = el * 100;
+      return newEl;
+    };
+    arr.reduce(method)   exxpected output = 600
+    arr.reduce(method,4)  exxpected output = 1000
+
+    let arr = []
+    let method = (el) => {
+      let newEl = el * 100;
+      return newEl;
+    };
+    arr.reduce(method)   exxpected output = TypeError: Reduce of empty array with no initial value
